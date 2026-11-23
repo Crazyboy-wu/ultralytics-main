@@ -35,8 +35,15 @@ except ImportError:  # torch 1.10-1.12 x86_64 wheels request an executable stack
 
 from ultralytics import __version__
 from ultralytics.utils.git import GitRepo
-from ultralytics.utils.patches import imread as imread  # re-export for backwards compatibility
-from ultralytics.utils.patches import imread_unicode, imshow, imwrite, torch_save  # for patches
+from ultralytics.utils.patches import (
+    imread as imread,  # re-export for backwards compatibility
+)
+from ultralytics.utils.patches import (  # for patches
+    imread_unicode,
+    imshow,
+    imwrite,
+    torch_save,
+)
 from ultralytics.utils.tqdm import TQDM  # noqa
 
 

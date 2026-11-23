@@ -34,7 +34,12 @@ class LiteRTBackend(BaseBackend):
         LOGGER.info(f"Loading {tflite_file} for LiteRT inference...")
         if self.intel:  # Intel OpenVINO plugin through CompiledModel
             check_requirements(["ai-edge-litert>=2.3.0", "ai-edge-litert-sdk-intel>=2.3.0"])
-            from ai_edge_litert.compiled_model import CompiledModel, HardwareAccelerator, IntelOpenVinoOptions, Options
+            from ai_edge_litert.compiled_model import (
+                CompiledModel,
+                HardwareAccelerator,
+                IntelOpenVinoOptions,
+                Options,
+            )
 
             backend = getattr(IntelOpenVinoOptions.GRAPH_BACKEND, self.device.partition(":")[2].upper(), None)
             self.device = torch.device("cpu")

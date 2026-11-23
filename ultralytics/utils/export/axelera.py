@@ -65,7 +65,9 @@ def torch2axelera(
                 raise ModuleNotFoundError(f"Axelera export requires axelera-devkit=={AXELERA_SDK}.")
             from axelera import compiler
             from axelera.compiler import CompilerConfig
-            from axelera.compiler.config.model_specific import extract_ultralytics_metadata
+            from axelera.compiler.config.model_specific import (
+                extract_ultralytics_metadata,
+            )
 
             LOGGER.info(f"\n{prefix} starting export with Axelera compiler...")
 

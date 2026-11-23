@@ -17,7 +17,14 @@ from PIL import Image
 from torch.utils.data import ConcatDataset
 
 from ultralytics.nn.autobackend import check_class_names
-from ultralytics.utils import LOCAL_RANK, LOGGER, NUM_THREADS, TQDM, IterableSimpleNamespace, colorstr
+from ultralytics.utils import (
+    LOCAL_RANK,
+    LOGGER,
+    NUM_THREADS,
+    TQDM,
+    IterableSimpleNamespace,
+    colorstr,
+)
 from ultralytics.utils.instance import Instances
 from ultralytics.utils.ops import resample_segments, segments2boxes
 from ultralytics.utils.patches import PIL_FALLBACK_SUFFIXES, imread, imread_unicode

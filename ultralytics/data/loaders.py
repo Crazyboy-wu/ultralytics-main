@@ -22,7 +22,14 @@ import torch
 from PIL import Image, ImageOps
 
 from ultralytics.data.utils import FORMATS_HELP_MSG, IMG_FORMATS, VID_FORMATS
-from ultralytics.utils import IS_COLAB, IS_KAGGLE, LOGGER, NUM_THREADS, REQUEST_HEADERS, ops
+from ultralytics.utils import (
+    IS_COLAB,
+    IS_KAGGLE,
+    LOGGER,
+    NUM_THREADS,
+    REQUEST_HEADERS,
+    ops,
+)
 from ultralytics.utils.checks import check_requirements
 from ultralytics.utils.patches import PIL_FALLBACK_SUFFIXES, imread
 

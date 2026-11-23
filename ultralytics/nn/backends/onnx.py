@@ -12,8 +12,20 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from ultralytics.utils import ARM64, LINUX, LOGGER, USER_CONFIG_DIR, WINDOWS, ThreadingLocked
-from ultralytics.utils.checks import IS_PYTHON_MINIMUM_3_11, ONNXRUNTIME_BUILDS, check_requirements, rocm_is_available
+from ultralytics.utils import (
+    ARM64,
+    LINUX,
+    LOGGER,
+    USER_CONFIG_DIR,
+    WINDOWS,
+    ThreadingLocked,
+)
+from ultralytics.utils.checks import (
+    IS_PYTHON_MINIMUM_3_11,
+    ONNXRUNTIME_BUILDS,
+    check_requirements,
+    rocm_is_available,
+)
 
 from .base import BaseBackend
 

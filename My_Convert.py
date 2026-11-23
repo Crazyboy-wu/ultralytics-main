@@ -1,9 +1,11 @@
-import torch
+import os
+
+import numpy as np
 import onnx
 import onnxruntime as ort
-import numpy as np
 import onnxsim
-import os
+import torch
+
 from ultralytics import YOLO
 
 # ===================== 配置区，修改这里 =====================
@@ -28,13 +30,10 @@ torch.onnx.export(
     export_params=True,
     opset_version=17,
     do_constant_folding=True,
-    dynamo=False, # 关闭dynamo，解决Split num_outputs报错
+    dynamo=False,  # 关闭dynamo，解决Split num_outputs报错
     input_names=["images"],
     output_names=["output0"],
-    dynamic_axes={
-        "images": {0: "batch_size"},
-        "output0": {0: "batch_size"}
-    }
+    dynamic_axes={"images": {0: "batch_size"}, "output0": {0: "batch_size"}},
 )
 print(f"✅ 原始ONNX导出完成：{out_onnx}")
 

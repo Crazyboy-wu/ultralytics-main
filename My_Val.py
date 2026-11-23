@@ -13,25 +13,10 @@ DATA = r"D:\Deep_Learning\ultralytics-8.3.163\datasets\datasets_of_gugu\datasets
 
 model = YOLO(MODEL)
 
-conf_list = [
-    0.001,
-    0.005,
-    0.01,
-    0.025,
-    0.05,
-    0.10
-]
+conf_list = [0.001, 0.005, 0.01, 0.025, 0.05, 0.10]
 
 for conf in conf_list:
-    metrics = model.val(
-        data=DATA,
-        imgsz=960,
-        batch=4,
-        conf=conf,
-        iou=0.7,
-        plots=False,
-        workers=0
-    )
+    metrics = model.val(data=DATA, imgsz=960, batch=4, conf=conf, iou=0.7, plots=False, workers=0)
 
     print(
         f"conf={conf:.3f} | "
@@ -40,5 +25,3 @@ for conf in conf_list:
         f"mAP50={metrics.box.map50:.4f} | "
         f"mAP50-95={metrics.box.map:.4f}"
     )
-
-
