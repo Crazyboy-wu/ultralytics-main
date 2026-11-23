@@ -12,10 +12,21 @@ import numpy as np
 import torch
 from PIL import Image
 
-from ultralytics.cfg import QUANTIZE_ALIASES, TASK2DATA, _handle_deprecation, get_cfg, get_save_dir
+from ultralytics.cfg import (
+    QUANTIZE_ALIASES,
+    TASK2DATA,
+    _handle_deprecation,
+    get_cfg,
+    get_save_dir,
+)
 from ultralytics.engine.results import Results
 from ultralytics.nn.backends.base import BaseBackend
-from ultralytics.nn.tasks import BaseModel, guess_model_task, load_checkpoint, yaml_model_load
+from ultralytics.nn.tasks import (
+    BaseModel,
+    guess_model_task,
+    load_checkpoint,
+    yaml_model_load,
+)
 from ultralytics.utils import (
     ARGV,
     ASSETS,
@@ -678,7 +689,10 @@ class Model(torch.nn.Module):
         self._check_is_pytorch_model()
         if self.task != "depth":
             raise ValueError(f"calibrate() is only supported for depth models (task='depth'), got task={self.task!r}.")
-        from ultralytics.models.yolo.depth.calibrate import _depth_head, fit_calibration_selective
+        from ultralytics.models.yolo.depth.calibrate import (
+            _depth_head,
+            fit_calibration_selective,
+        )
 
         if _depth_head(self.model) is None:
             raise ValueError("Model has no Depth head with calibration buffers (cal_a/cal_b).")
@@ -837,8 +851,8 @@ class Model(torch.nn.Module):
         Returns:
             (ultralytics.utils.metrics.DetMetrics | dict | None): Training metrics if available and training is
                 successful; otherwise, None. The specific metrics type depends on the task. When `data` is a list or
-                tuple of datasets, the base model is fine-tuned on each in series and a {dataset: metrics} dict is
-                returned.
+                tuple of datasets, the base model is fine-tuned on each in series and a {dataset: metrics} dict
+                is returned.
 
         Raises:
             TypeError: If the model is not a PyTorch model.

@@ -22,7 +22,11 @@ from tests import CFG, MODEL, MODELS, SOURCE, SOURCES_LIST, TASK_MODEL_DATA
 from ultralytics import RTDETR, YOLO
 from ultralytics.cfg import get_cfg
 from ultralytics.data.build import build_dataloader, load_inference_source
-from ultralytics.data.utils import check_cls_dataset, check_det_dataset, get_split_fraction
+from ultralytics.data.utils import (
+    check_cls_dataset,
+    check_det_dataset,
+    get_split_fraction,
+)
 from ultralytics.utils import (
     ARM64,
     ASSETS,
@@ -363,7 +367,12 @@ def test_model_methods():
 
 def test_model_load_remaps_cls_head_by_names():
     """Test class-name remap is limited to closed-set class-logit heads."""
-    from ultralytics.nn.tasks import DetectionModel, SegmentationModel, SemanticSegmentationModel, YOLOEModel
+    from ultralytics.nn.tasks import (
+        DetectionModel,
+        SegmentationModel,
+        SemanticSegmentationModel,
+        YOLOEModel,
+    )
 
     for model_cls, cfg, branches in (
         (DetectionModel, "yolo26n.yaml", ("cv3.0", "cv3.1", "cv3.2")),
@@ -1478,7 +1487,10 @@ def test_depth_calibration_checkpoint_provenance(tmp_path):
     """Depth calibration persists the selected transform and sample count with the checkpoint."""
     from copy import deepcopy
 
-    from ultralytics.models.yolo.depth.calibrate import _depth_head, calibrate_checkpoint
+    from ultralytics.models.yolo.depth.calibrate import (
+        _depth_head,
+        calibrate_checkpoint,
+    )
     from ultralytics.nn.tasks import DepthModel
     from ultralytics.utils.patches import torch_load
 
@@ -1900,7 +1912,13 @@ def test_process_mask_empty():
 
 def test_utils_files(tmp_path):
     """Test file handling utilities including file age, date, and paths with spaces."""
-    from ultralytics.utils.files import file_age, file_date, get_latest_run, increment_path, spaces_in_path
+    from ultralytics.utils.files import (
+        file_age,
+        file_date,
+        get_latest_run,
+        increment_path,
+        spaces_in_path,
+    )
 
     file_age(SOURCE)
     file_date(SOURCE)
@@ -1937,7 +1955,13 @@ def test_utils_patches_torch_save(tmp_path):
 
 def test_nn_modules_conv():
     """Test Convolutional Neural Network modules including CBAM, Conv2, and ConvTranspose."""
-    from ultralytics.nn.modules.conv import CBAM, Conv2, ConvTranspose, DWConvTranspose2d, Focus
+    from ultralytics.nn.modules.conv import (
+        CBAM,
+        Conv2,
+        ConvTranspose,
+        DWConvTranspose2d,
+        Focus,
+    )
 
     c1, c2 = 8, 16  # input and output channels
     x = torch.zeros(4, c1, 10, 10)  # BCHW
@@ -2204,7 +2228,11 @@ def test_yoloe(tmp_path):
     model.val(data="coco128-seg.yaml", load_vp=True, imgsz=32)
 
     # Train, fine-tune
-    from ultralytics.models.yolo.yoloe import YOLOEPEFreeTrainer, YOLOEPESegTrainer, YOLOESegTrainerFromScratch
+    from ultralytics.models.yolo.yoloe import (
+        YOLOEPEFreeTrainer,
+        YOLOEPESegTrainer,
+        YOLOESegTrainerFromScratch,
+    )
 
     model = YOLOE("yoloe-26n-seg.pt")
     model.train(

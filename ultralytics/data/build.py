@@ -36,10 +36,20 @@ from ultralytics.data.loaders import (
     SourceTypes,
     autocast_list,
 )
-from ultralytics.data.utils import IMG_FORMATS, VID_FORMATS, add_polygon_background, get_split_fraction
+from ultralytics.data.utils import (
+    IMG_FORMATS,
+    VID_FORMATS,
+    add_polygon_background,
+    get_split_fraction,
+)
 from ultralytics.utils import RANK, REQUEST_HEADERS, colorstr
 from ultralytics.utils.checks import check_file
-from ultralytics.utils.torch_utils import TORCH_1_13, TORCH_2_0, TORCH_2_7, get_torch_device_backend
+from ultralytics.utils.torch_utils import (
+    TORCH_1_13,
+    TORCH_2_0,
+    TORCH_2_7,
+    get_torch_device_backend,
+)
 
 
 class InfiniteDataLoader(dataloader.DataLoader):
@@ -457,9 +467,10 @@ def check_source(
         elif is_url:  # a URL without a media suffix is one image if it returns an image/* response
             import requests  # scoped as slow import
 
-            with contextlib.suppress(requests.RequestException), requests.get(
-                source, stream=True, headers=REQUEST_HEADERS, timeout=3
-            ) as r:
+            with (
+                contextlib.suppress(requests.RequestException),
+                requests.get(source, stream=True, headers=REQUEST_HEADERS, timeout=3) as r,
+            ):
                 webcam = not r.headers.get("Content-Type", "").startswith("image/")
             if not webcam:
                 source, from_img = autocast_list([source]), True

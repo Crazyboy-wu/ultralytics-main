@@ -17,8 +17,21 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-from ultralytics.data.utils import FORMATS_HELP_MSG, HELP_URL, IMG_FORMATS, check_file_speeds, get_split_fraction
-from ultralytics.utils import DEFAULT_CFG, LOCAL_RANK, LOGGER, NUM_THREADS, TQDM, IterableSimpleNamespace
+from ultralytics.data.utils import (
+    FORMATS_HELP_MSG,
+    HELP_URL,
+    IMG_FORMATS,
+    check_file_speeds,
+    get_split_fraction,
+)
+from ultralytics.utils import (
+    DEFAULT_CFG,
+    LOCAL_RANK,
+    LOGGER,
+    NUM_THREADS,
+    TQDM,
+    IterableSimpleNamespace,
+)
 from ultralytics.utils.patches import imread
 
 

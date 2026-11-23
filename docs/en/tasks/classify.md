@@ -94,7 +94,10 @@ import torchvision.transforms as T
 from ultralytics import YOLO
 from ultralytics.data.augment import ClassifyLetterBox
 from ultralytics.data.dataset import ClassificationDataset
-from ultralytics.models.yolo.classify import ClassificationTrainer, ClassificationValidator
+from ultralytics.models.yolo.classify import (
+    ClassificationTrainer,
+    ClassificationValidator,
+)
 
 
 class CustomizedDataset(ClassificationDataset):
